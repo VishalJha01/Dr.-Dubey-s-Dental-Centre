@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment - Dr. Dubey's Dental Centre</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar - Fixed Top with Shadow -->
+    <header>
+        <nav class="navbar navbar-expand-lg dental-navbar">
+            <div class="container">
+              <a class="navbar-brand" href="index.html">
+                <div class="dental-logo"></div>
+                <span class="brand-text">Dr. Dubey's Dental Centre</span>
+              </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#dentalNavbar" aria-controls="dentalNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="dentalNavbar">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link" id="nav-home" href="index.html">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="nav-about" href="index.html#about">About</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="nav-services" href="index.html#services">Services</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="nav-appointment" href="appointment.html">Book Appointment</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="nav-contact" href="index.html#contact">Contact</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" id="nav-login" href="login.html">Doctor Login</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+    </header>
+
+    <!-- Appointment Form Section -->
+    <section class="py-5 mt-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body p-4 p-md-5">
+                            <h2 class="text-center text-primary mb-4">Book Your Appointment</h2>
+                            <div class="divider mx-auto mb-4"></div>
+                            
+                            <div class="alert alert-info mb-4" data-aos="fade-up" data-aos-delay="200">
+                                <div class="d-flex">
+                                    <div class="me-3">
+                                        <i class="fas fa-info-circle fa-2x"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="alert-heading">Consultation Fee: ₹299</h5>
+                                        <p class="mb-0">Please fill out the form below to book your appointment. You can also upload your dental X-ray for a more accurate assessment.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Form Submission Status Alerts -->
+                            <div id="formAlerts">
+                                <div class="alert alert-danger d-none" id="errorAlert" role="alert">
+                                    <i class="fas fa-exclamation-circle me-2"></i>
+                                    <span id="errorMessage">Please fill in all required fields.</span>
+                                </div>
+                                <div class="alert alert-success d-none" id="successAlert" role="alert">
+                                    <i class="fas fa-check-circle me-2"></i>
+                                    <span id="successMessage">Your appointment has been booked successfully!</span>
+                                </div>
+                            </div>
+                            
+                            <form id="appointmentForm" class="needs-validation" novalidate>
+                                <!-- Personal Information -->
+                                <div class="row mb-3">
+                                    <div class="col-12 mb-3" data-aos="fade-up" data-aos-delay="300">
+                                        <label for="fullName" class="form-label">Full Name <span class="text-danger">*</span></label>
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                            <input type="text" class="form-control" id="fullName" required>
+                                            <div class="invalid-feedback">
+                                                Please enter your full name.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3" data-aos="fade-up" data-aos-delay="400">
+                                        <label for="age" class="form-label">Age <span class="text-danger">*</span></label>
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="fas fa-birthday-cake"></i></span>
+                                            <input type="number" class="form-control" id="age" min="1" max="120" required>
+                                            <div class="invalid-feedback">
+                                                Please enter a valid age.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3" data-aos="fade-up" data-aos-delay="500">
+                                        <label for="gender" class="form-label">Gender <span class="text-danger">*</span></label>
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="fas fa-venus-mars"></i></span>
+                                            <select class="form-select" id="gender" required>
+                                                <option value="" selected disabled>Select Gender</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                                <option value="other">Other</option>
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                Please select your gender.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Contact Information -->
+                                <div class="row mb-3">
+                                    <div class="col-md-6 mb-3" data-aos="fade-up" data-aos-delay="600">
+                                        <label for="phone" class="form-label">Phone Number <span class="text-danger">*</span></label>
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="fas fa-phone-alt"></i></span>
+                                            <input type="tel" class="form-control" id="phone" pattern="[0-9]{10}" required>
+                                            <div class="invalid-feedback">
+                                                Please enter a valid 10-digit phone number.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3" data-aos="fade-up" data-aos-delay="700">
+                                        <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                            <input type="email" class="form-control" id="email" required>
+                                            <div class="invalid-feedback">
+                                                Please enter a valid email address.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Symptoms -->
+                                <div class="mb-3" data-aos="fade-up" data-aos-delay="800">
+                                    <label for="symptoms" class="form-label">Describe Your Symptoms <span class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-notes-medical"></i></span>
+                                        <textarea class="form-control" id="symptoms" rows="4" required></textarea>
+                                        <div class="invalid-feedback">
+                                            Please describe your symptoms.
+                                        </div>
+                                    </div>
+                                    <small class="text-muted">Include details like pain level, duration, and any relevant medical history.</small>
+                                </div>
+                                
+                                <!-- X-ray Upload -->
+                                <div class="mb-3" data-aos="fade-up" data-aos-delay="900">
+                                    <label for="xrayUpload" class="form-label">Upload Dental X-ray (if available)</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="fas fa-x-ray"></i></span>
+                                        <input type="file" class="form-control" id="xrayUpload" accept="image/*">
+                                    </div>
+                                    <div class="form-text">Supported formats: JPG, PNG, PDF (Max size: 5MB)</div>
+                                    <div id="xrayPreview" class="mt-2 d-none">
+                                        <img src="/placeholder.svg" alt="X-ray Preview" class="img-thumbnail" style="max-height: 150px;">
+                                        <button type="button" class="btn btn-sm btn-outline-danger ms-2" id="removeXray">
+                                            <i class="fas fa-times"></i> Remove
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <!-- Appointment Date & Time -->
+                                <div class="row mb-4">
+                                    <div class="col-md-6 mb-3" data-aos="fade-up" data-aos-delay="1000">
+                                        <label for="appointmentDate" class="form-label">Preferred Date <span class="text-danger">*</span></label>
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                                            <input type="date" class="form-control" id="appointmentDate" required>
+                                            <div class="invalid-feedback">
+                                                Please select a preferred date.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3" data-aos="fade-up" data-aos-delay="1100">
+                                        <label for="appointmentTime" class="form-label">Preferred Time <span class="text-danger">*</span></label>
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="fas fa-clock"></i></span>
+                                            <input type="time" class="form-control" id="appointmentTime" required>
+                                            <div class="invalid-feedback">
+                                                Please select a preferred time.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Submit Button -->
+                                <div class="text-center" data-aos="fade-up" data-aos-delay="1200">
+                                    <button type="submit" class="btn btn-primary btn-lg px-5">
+                                        <span id="submitText">Book Appointment</span>
+                                        <span id="loadingSpinner" class="d-none">
+                                            <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                                            Processing...
+                                        </span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Confirmation Modal -->
+    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="confirmationModalLabel">Appointment Confirmed!</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center p-4">
+                    <div class="mb-3">
+                        <i class="fas fa-check-circle text-success fa-4x animate-pulse"></i>
+                    </div>
+                    <h4 class="mb-3">Thank you for booking with us!</h4>
+                    <p>Your appointment has been scheduled successfully.</p>
+                    <div class="alert alert-info">
+                        <h5>Your Token Number: <span id="tokenNumber" class="fw-bold"></span></h5>
+                        <p class="mb-0">Priority Level: <span id="priorityLevel" class="fw-bold"></span></p>
+                    </div>
+                    <p>We've sent a confirmation email with all the details to your registered email address.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h5>Dr. Dubey's Dental Centre</h5>
+                    <p class="mb-0">Providing quality dental care since 2008</p>
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white">Home</a></li>
+                        <li><a href="index.html#about" class="text-white">About</a></li>
+                        <li><a href="index.html#services" class="text-white">Services</a></li>
+                        <li><a href="appointment.html" class="text-white">Book Appointment</a></li>
+                        <li><a href="index.html#contact" class="text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Connect With Us</h5>
+                    <div class="social-icons">
+                        <a href="#" class="text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-3 bg-white">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <p class="mb-0">&copy; 2025 Dr. Dubey's Dental Implant & Facial Surgery Centre. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+    
+    <script>
+        // Initialize AOS animations
+        AOS.init();
+        
+        // X-ray upload preview
+        document.getElementById('xrayUpload').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const previewDiv = document.getElementById('xrayPreview');
+                    previewDiv.classList.remove('d-none');
+                    previewDiv.querySelector('img').src = event.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+        
+        // Remove X-ray preview
+        document.getElementById('removeXray').addEventListener('click', function() {
+            document.getElementById('xrayUpload').value = '';
+            document.getElementById('xrayPreview').classList.add('d-none');
+        });
+        
+        // Enhanced form validation and submission
+        document.getElementById('appointmentForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Hide any existing alerts
+            document.getElementById('errorAlert').classList.add('d-none');
+            document.getElementById('successAlert').classList.add('d-none');
+            
+            // Show loading spinner
+            document.getElementById('submitText').classList.add('d-none');
+            document.getElementById('loadingSpinner').classList.remove('d-none');
+            
+            // Check form validity
+            if (!this.checkValidity()) {
+                event.stopPropagation();
+                document.getElementById('errorAlert').classList.remove('d-none');
+                document.getElementById('errorMessage').textContent = 'Please fill in all required fields correctly.';
+                
+                // Hide loading spinner
+                document.getElementById('submitText').classList.remove('d-none');
+                document.getElementById('loadingSpinner').classList.add('d-none');
+            } else {
+                // Simulate server processing delay
+                setTimeout(function() {
+                    // Generate token and determine priority
+                    handleAppointmentSubmission();
+                    
+                    // Hide loading spinner
+                    document.getElementById('submitText').classList.remove('d-none');
+                    document.getElementById('loadingSpinner').classList.add('d-none');
+                    
+                    // Reset form after successful submission
+                    document.getElementById('appointmentForm').reset();
+                    document.getElementById('xrayPreview').classList.add('d-none');
+                    document.getElementById('appointmentForm').classList.remove('was-validated');
+                }, 1500);
+            }
+            
+            this.classList.add('was-validated');
+        });
+        
+        // Function to handle appointment submission with enhanced priority logic
+        function handleAppointmentSubmission() {
+            // Generate a random token number between 1000 and 9999
+            const tokenNumber = Math.floor(Math.random() * 9000) + 1000;
+            
+            // Get symptoms text
+            const symptoms = document.getElementById('symptoms').value.toLowerCase();
+            
+            // Determine priority based on symptoms with more sophisticated logic
+            let priority = 'Low';
+            let priorityClass = 'text-success';
+            
+            // Keywords that might indicate higher priority
+            const emergencyKeywords = ['severe pain', 'extreme', 'unbearable', 'bleeding', 'accident', 'broken tooth', 'knocked out', 'facial swelling', 'abscess'];
+            const urgentKeywords = ['pain', 'swelling', 'sensitive', 'discomfort', 'loose', 'filling fell out', 'crown came off'];
+            const routineKeywords = ['check up', 'cleaning', 'whitening', 'cosmetic', 'routine'];
+            
+            // Check for emergency keywords
+            if (emergencyKeywords.some(keyword => symptoms.includes(keyword))) {
+                priority = 'High';
+                priorityClass = 'text-danger';
+            } 
+            // Check for urgent keywords if not already high
+            else if (urgentKeywords.some(keyword => symptoms.includes(keyword))) {
+                priority = 'Medium';
+                priorityClass = 'text-warning';
+            }
+            // Check for routine keywords
+            else if (routineKeywords.some(keyword => symptoms.includes(keyword))) {
+                priority = 'Low';
+            }
+            // If symptoms text is long but no keywords matched, default to medium
+            else if (symptoms.length > 100) {
+                priority = 'Medium';
+                priorityClass = 'text-warning';
+            }
+            
+            // Set token number and priority in the modal
+            document.getElementById('tokenNumber').textContent = tokenNumber;
+            document.getElementById('priorityLevel').textContent = priority;
+            document.getElementById('priorityLevel').className = `fw-bold ${priorityClass}`;
+            
+            // Show the confirmation modal
+            const confirmationModal = new bootstrap.Modal(document.getElementById('confirmationModal'));
+            confirmationModal.show();
+        }
+    </script>
+</body>
+</html>
